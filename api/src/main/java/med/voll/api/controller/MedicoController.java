@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class MedicoController {
 
-    private MedicoRepository repository;
+    private final MedicoRepository repository;
 
     public MedicoController(MedicoRepository repository) {
         this.repository = repository;
@@ -22,7 +22,7 @@ public class MedicoController {
     @Transactional
     public void cadastrar(@RequestBody @Valid DadosCadastroMedico dados ){
 
-        var medicos = repository.save(new Medico(dados));
+        repository.save(new Medico(dados));
         System.out.println(dados);
 
     }
